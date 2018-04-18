@@ -1,6 +1,6 @@
 # Checkbook Alexa Voice Search
 
-##Set up
+## Set up
 Follow these steps to get the checkbook Alexa skill deployed to your account. At this stage we are not going to have the app certified and published to Alexa Skills Store. So you can only use it on the Alexa device of your account.
 
 1. Register a new account at https://developer.amazon.com/alexa
@@ -17,11 +17,11 @@ Follow these steps to get the checkbook Alexa skill deployed to your account. At
 
 5. run `ask deploy -p checkbookalexa`
 
-##Register your Alexa device
+## Register your Alexa device
 1. register one of your Alexa device to the same developer account at https://alexa.amazon.com
 2. the Alexa device is now capable of answering questions about checkbook.
 
-##Talk to Alexa
+## Talk to Alexa
 All questions availble on API https://uat-checkbook-nyc.reisys.com/json_api/ can be asked to Alexa and get proper response. Based on the nature of the subjects, the questions can be asked in two ways:
 
 ```
