@@ -31,58 +31,15 @@
                         {
                             "name":"in_for",
                             "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
                         }
                     ],
                     "samples":[
+                        "how many {count_subject} {in_for} {year_type} {count_year}",
                         "how many {count_subject} {in_for} {count_year}"
-                    ]
-                },
-                {
-                    "name":"CountQuestionCalendarIntent",
-                    "slots":[
-                        {
-                            "name":"count_year",
-                            "type":"AMAZON.NUMBER"
-                        },
-                        {
-                            "name":"count_subject",
-                            "type":"COUNT_SUBJECTS"
-                        },
-                        {
-                            "name":"in_for",
-                            "type":"IN_FOR"
-                        },
-                        {
-                            "name":"year_type",
-                            "type":"YEAR_TYPES"
-                        }
-                    ],
-                    "samples":[
-                        "how many {count_subject} {in_for} calendar year {count_year}"
-                    ]
-                },
-                {
-                    "name":"CountQuestionFiscalIntent",
-                    "slots":[
-                        {
-                            "name":"count_year",
-                            "type":"AMAZON.NUMBER"
-                        },
-                        {
-                            "name":"count_subject",
-                            "type":"COUNT_SUBJECTS"
-                        },
-                        {
-                            "name":"in_for",
-                            "type":"IN_FOR"
-                        },
-                        {
-                            "name":"year_type",
-                            "type":"YEAR_TYPES"
-                        }
-                    ],
-                    "samples":[
-                        "how many {count_subject} {in_for} fiscal year {count_year}"
                     ]
                 },
                 {
@@ -99,59 +56,15 @@
                         {
                             "name":"in_for",
                             "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
                         }
                     ],
                     "samples":[
+                        "what is the {amount_subject} {in_for} {year_type} {amount_year}",
                         "what is the {amount_subject} {in_for} {amount_year}"
-                    ]
-                },
-                {
-                    "name":"AmountQuestionCalendarIntent",
-                    "slots":[
-                        {
-                            "name":"amount_year",
-                            "type":"AMAZON.NUMBER"
-                        },
-                        {
-                            "name":"amount_subject",
-                            "type":"AMOUNT_SUBJECTS"
-                        },
-                        {
-                            "name":"in_for",
-                            "type":"IN_FOR"
-                        },
-                        {
-                            "name":"year_type",
-                            "type":"YEAR_TYPES"
-                        }
-                    ],
-                    "samples":[
-                        "what is the {amount_subject} {in_for} calendar year {amount_year}",
-                        "what is the {amount_subject} {in_for} year {amount_year}"
-                    ]
-                },
-                {
-                    "name":"AmountQuestionFiscalIntent",
-                    "slots":[
-                        {
-                            "name":"amount_year",
-                            "type":"AMAZON.NUMBER"
-                        },
-                        {
-                            "name":"amount_subject",
-                            "type":"AMOUNT_SUBJECTS"
-                        },
-                        {
-                            "name":"in_for",
-                            "type":"IN_FOR"
-                        },
-                        {
-                            "name":"year_type",
-                            "type":"YEAR_TYPES"
-                        }
-                    ],
-                    "samples":[
-                        "what is the {amount_subject} {in_for} fiscal year {amount_year}"
                     ]
                 },
                 {

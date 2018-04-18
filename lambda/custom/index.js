@@ -49,13 +49,6 @@ var handlers = {
             this.emit('DoCountQuestionFiscal');
         }
     },
-    'CountQuestionFiscalIntent': function () {
-        this.emit('DoCountQuestionFiscal');
-    },
-    'CountQuestionCalendarIntent': function () {
-        this.emit('DoCountQuestionCalendar');
-    },
-
 
     'AmountQuestionIntent': function () {
         this.emit('DoAmountQuestionCalendar');
@@ -73,13 +66,6 @@ var handlers = {
             this.emit('DoAmountQuestionCalendar');
         }
     },
-    'AmountQuestionFiscalIntent': function () {
-        this.emit('DoAmountQuestionFiscal');
-    },
-    'AmountQuestionCalendarIntent': function () {
-        this.emit('DoAmountQuestionCalendar');
-    },
-
     'DoCountQuestionFiscal': function () {
         handlers.DoCountQuestion(this, 'fiscal');
     },
@@ -103,6 +89,7 @@ var handlers = {
         var year = from_promot_intent?handler.event.request.intent.slots.count_prompt_year.value:handler.event.request.intent.slots.count_year.value;
 
         if (!year || year === '?' || !subject || subject === '?') {
+            console.log('no year: ' + year + " or no subject: " + subject);
             handler.emit('SayWrongQuestion');
         }else if ( parseInt(year, 10) < 1000){
             handler.emit(':tell', "I heard year " + parseInt(year, 10) + ". That is not a valid year.");
@@ -148,6 +135,7 @@ var handlers = {
 
         var year = from_promot_intent?handler.event.request.intent.slots.amount_prompt_year.value:handler.event.request.intent.slots.amount_year.value;
         if (!year || year === '?' || !subject || subject === '?') {
+            console.log('no year: ' + year + " or no subject: " + subject);
             handler.emit('SayWrongQuestion');
         }else if ( parseInt(year, 10) < 1000){
             handler.emit(':tell', "I heard year " + parseInt(year, 10) + ". That is not a valid year.");
