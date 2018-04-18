@@ -1,0 +1,5 @@
+_tmp/
+config.js
+gitsetup.sh
+.ask/config
+node_modules

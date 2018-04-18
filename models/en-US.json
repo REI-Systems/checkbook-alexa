@@ -1,0 +1,376 @@
+{
+    "interactionModel":{
+        "languageModel":{
+            "invocationName":"check book",
+            "types":[],
+            "intents":[
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+
+                {
+                    "name":"CountQuestionIntent",
+                    "slots":[
+                        {
+                            "name":"count_year",
+                            "type":"AMAZON.NUMBER"
+                        },
+                        {
+                            "name":"count_subject",
+                            "type":"COUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        }
+                    ],
+                    "samples":[
+                        "how many {count_subject} {in_for} {count_year}"
+                    ]
+                },
+                {
+                    "name":"CountQuestionCalendarIntent",
+                    "slots":[
+                        {
+                            "name":"count_year",
+                            "type":"AMAZON.NUMBER"
+                        },
+                        {
+                            "name":"count_subject",
+                            "type":"COUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
+                        }
+                    ],
+                    "samples":[
+                        "how many {count_subject} {in_for} calendar year {count_year}"
+                    ]
+                },
+                {
+                    "name":"CountQuestionFiscalIntent",
+                    "slots":[
+                        {
+                            "name":"count_year",
+                            "type":"AMAZON.NUMBER"
+                        },
+                        {
+                            "name":"count_subject",
+                            "type":"COUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
+                        }
+                    ],
+                    "samples":[
+                        "how many {count_subject} {in_for} fiscal year {count_year}"
+                    ]
+                },
+                {
+                    "name":"AmountQuestionIntent",
+                    "slots":[
+                        {
+                            "name":"amount_year",
+                            "type":"AMAZON.NUMBER"
+                        },
+                        {
+                            "name":"amount_subject",
+                            "type":"AMOUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        }
+                    ],
+                    "samples":[
+                        "what is the {amount_subject} {in_for} {amount_year}"
+                    ]
+                },
+                {
+                    "name":"AmountQuestionCalendarIntent",
+                    "slots":[
+                        {
+                            "name":"amount_year",
+                            "type":"AMAZON.NUMBER"
+                        },
+                        {
+                            "name":"amount_subject",
+                            "type":"AMOUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
+                        }
+                    ],
+                    "samples":[
+                        "what is the {amount_subject} {in_for} calendar year {amount_year}",
+                        "what is the {amount_subject} {in_for} year {amount_year}"
+                    ]
+                },
+                {
+                    "name":"AmountQuestionFiscalIntent",
+                    "slots":[
+                        {
+                            "name":"amount_year",
+                            "type":"AMAZON.NUMBER"
+                        },
+                        {
+                            "name":"amount_subject",
+                            "type":"AMOUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
+                        }
+                    ],
+                    "samples":[
+                        "what is the {amount_subject} {in_for} fiscal year {amount_year}"
+                    ]
+                },
+                {
+                    "name":"CountQuestionPromptIntent",
+                    "slots":[
+                        {
+                            "name":"count_prompt_year",
+                            "type":"AMAZON.NUMBER",
+                            "samples": [
+                                "{count_prompt_year}",
+                                "{year_type} {count_prompt_year}",
+                                "the year of {count_prompt_year}"
+                            ]
+                        },
+                        {
+                            "name":"count_prompt_subject",
+                            "type":"COUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
+                        }
+                    ],
+                    "samples":[
+                        "how many {count_prompt_subject}"
+                    ]
+                },
+                {
+                    "name":"AmountQuestionPromptIntent",
+                    "slots":[
+                        {
+                            "name":"amount_prompt_year",
+                            "type":"AMAZON.NUMBER",
+                            "samples": [
+                                "{amount_prompt_year}",
+                                "{year_type} {amount_prompt_year}",
+                                "the year of {amount_prompt_year}"
+                            ]
+                        },
+                        {
+                            "name":"amount_prompt_subject",
+                            "type":"AMOUNT_SUBJECTS"
+                        },
+                        {
+                            "name":"in_for",
+                            "type":"IN_FOR"
+                        },
+                        {
+                            "name":"year_type",
+                            "type":"YEAR_TYPES"
+                        }
+                    ],
+                    "samples":[
+                        "what is the {amount_prompt_subject}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "COUNT_SUBJECTS",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "active expense contracts",
+                                "synonyms": ["active expense contract"]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "active subcontracts",
+                                "synonyms": ["active subcontract"]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "subcontracts canceled",
+                                "synonyms": ["subcontract canceled", "subcontracts got canceled", "subcontract got canceled", "canceled subcontracts", "canceled subcontract"]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "subcontracts approved",
+                                "synonyms": ["subcontract approved", "subcontracts got approved", "subcontract got approved", "approved subcontracts", "approved subcontract"]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "subcontracts rejected",
+                                "synonyms": ["subcontract rejected", "subcontracts got rejected", "subcontract got rejected", "rejected subcontracts", "rejected subcontract"]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "subcontracts submitted",
+                                "synonyms": ["subcontract submitted", "subcontracts got submitted", "subcontract got submitted", "submitted subcontracts", "submitted subcontract"]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "subcontracts under review",
+                                "synonyms": ["subcontract under review"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "AMOUNT_SUBJECTS",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "total payroll"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "IN_FOR",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "in",
+                                "synonyms": ["for"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "YEAR_TYPES",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "fiscal year",
+                                "synonyms": [
+                                    "year", "the year of"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "calendar year"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CountQuestionPromptIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "count_prompt_subject",
+                            "type": "COUNT_SUBJECTS",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "count_prompt_year",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.741025832810.1255844227429"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "AmountQuestionPromptIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "amount_prompt_subject",
+                            "type": "AMOUNT_SUBJECTS",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "amount_prompt_year",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.741025832810.1255844227428"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.741025832810.1255844227429",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what year"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.741025832810.1255844227428",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what year"
+                    }
+                ]
+            }
+        ]
+    }
+}
