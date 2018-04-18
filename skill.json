@@ -3,12 +3,16 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "Sample Short Description",
+          "summary": "CheckbookNYC voice assistant",
           "examplePhrases": [
-            "Alexa open check book"
+            "Alexa ask checkbook what is total budget in 2018",
+            "Alexa ask checkbook how many active subcontracts for fiscal year 2018",
+            "Alexa ask checkbook how many subcontracts cancelled in 2017"
           ],
-          "name": "checkbook NYC",
-          "description": "Sample Full Description"
+          "name": "CheckbookNYC",
+          "description": "CheckbookNYC voice assistant",
+          "smallIconUri": "https://s3.amazonaws.com/checkbook-nyc/nyc-108.png",
+          "largeIconUri": "https://s3.amazonaws.com/checkbook-nyc/nyc-512.png"
         }
       },
       "isAvailableWorldwide": true,

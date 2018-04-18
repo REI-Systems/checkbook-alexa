@@ -16,7 +16,10 @@ const COUNT_SUBJECTS = [
     'subcontracts under review'
 ];
 const AMOUNT_SUBJECTS = [
-    'total payroll'
+    'total payroll',
+    'total budget',
+    'total spending',
+    'total revenue'
 ];
 
 exports.handler = function(event, context) {
@@ -86,7 +89,7 @@ var handlers = {
     'DoCountQuestion': function (handler, year_type = 'fiscal') {
         if (!handler) {
             handler = this;
-        };
+        }
         console.log("THIS.EVENT = " + JSON.stringify(handler.event));
 
         var from_promot_intent = !!handler.event.request.intent.slots.count_prompt_subject;
@@ -95,7 +98,7 @@ var handlers = {
         var subject;
         if (subject_obj.resolutions && subject_obj.resolutions.resolutionsPerAuthority[0].status.code ==="ER_SUCCESS_MATCH") {
             subject = subject_obj.resolutions.resolutionsPerAuthority[0].values[0].value.name;
-        };
+        }
 
         var year = from_promot_intent?handler.event.request.intent.slots.count_prompt_year.value:handler.event.request.intent.slots.count_year.value;
 
@@ -114,12 +117,12 @@ var handlers = {
                         handler.emit(':tell', "I have no data for year" + parseInt(year, 10) );
                     }else{
                         handler.emit('SayUnknownError');
-                    };
-                };
+                    }
+                }
                 handler.response.speak('For ' + year_type + ' year ' + year + ', the count of ' + CorrectSaying(subject) + ' of New York City is ' + data.data);
                 handler.emit(':responseReady');
             });
-        };
+        }
     },
 
 
@@ -132,7 +135,7 @@ var handlers = {
     'DoAmountQuestion': function (handler, year_type = 'fiscal') {
         if (!handler) {
             handler = this;
-        };
+        }
         console.log("THIS.EVENT = " + JSON.stringify(handler.event));
 
         var from_promot_intent = !!handler.event.request.intent.slots.amount_prompt_subject;
@@ -141,7 +144,7 @@ var handlers = {
         var subject;
         if (subject_obj.resolutions && subject_obj.resolutions.resolutionsPerAuthority[0].status.code ==="ER_SUCCESS_MATCH") {
             subject = subject_obj.resolutions.resolutionsPerAuthority[0].values[0].value.name;
-        };
+        }
 
         var year = from_promot_intent?handler.event.request.intent.slots.amount_prompt_year.value:handler.event.request.intent.slots.amount_year.value;
         if (!year || year === '?' || !subject || subject === '?') {
@@ -159,12 +162,12 @@ var handlers = {
                         handler.emit(':tell', "I have no data for year" + parseInt(year, 10) );
                     }else{
                         handler.emit('SayUnknownError');
-                    };
-                };
+                    }
+                }
                 handler.response.speak('For ' + year_type + ' year ' + year + ', the amount for ' + CorrectSaying(subject) + ' of New York City is ' + data.data);
                 handler.emit(':responseReady');
             });
-        };
+        }
     },
 
 
@@ -294,7 +297,7 @@ function ApiCallHttp(subject, year, year_type, callback) {
         });
     });
     req.end();
-};
+}
 
 function ApiHasError(data) {
     if (data.success) {
@@ -304,11 +307,11 @@ function ApiHasError(data) {
     }else{
         return UNKNOWN_ERROR;
     }
-};
+}
 
 function InArray(arr, elem) {
     return (arr.indexOf(elem) != -1);
-};
+}
 
 function CorrectSaying(subject) {
     // correct alexa's speaking of some terms
@@ -324,7 +327,7 @@ function CorrectSaying(subject) {
         return 'submitted sub contracts';
     }else if (subject === 'subcontracts under review'){
         return 'sub contracts under review';
-    };
+    }
 
     return subject;
 }

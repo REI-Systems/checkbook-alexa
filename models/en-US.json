@@ -1,7 +1,7 @@
 {
     "interactionModel":{
         "languageModel":{
-            "invocationName":"check book",
+            "invocationName":"checkbook",
             "types":[],
             "intents":[
                 {
@@ -267,6 +267,21 @@
                         {
                             "name": {
                                 "value": "total payroll"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "total spending"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "total budget"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "total revenue"
                             }
                         }
                     ]
