@@ -114,7 +114,7 @@ var handlers = {
                 var has_error = ApiHasError(data);
                 if (has_error) {
                     if (has_error === YEAR_ERROR) {
-                        handler.emit(':tell', "I have no data for year" + parseInt(year, 10) );
+                        handler.emit(':tell', "I have no data for year " + parseInt(year, 10) );
                     }else{
                         handler.emit('SayUnknownError');
                     }
@@ -159,7 +159,7 @@ var handlers = {
                 var has_error = ApiHasError(data);
                 if (has_error) {
                     if (has_error === YEAR_ERROR) {
-                        handler.emit(':tell', "I have no data for year" + parseInt(year, 10) );
+                        handler.emit(':tell', "I have no data for year " + parseInt(year, 10) );
                     }else{
                         handler.emit('SayUnknownError');
                     }
