@@ -34,7 +34,12 @@ var handlers = {
     },
 
     'CountQuestionIntent': function () {
-        this.emit('DoCountQuestion');
+        var year_type = this.event.request.intent.slots.year_type.value;
+        if (year_type === 'calendar year') {
+            this.emit('DoCountQuestionCalendar');
+        }else{
+            this.emit('DoCountQuestionFiscal');
+        }
     },
     'CountQuestionPromptIntent': function () {
         var dialogState = this.event.request.dialogState;
@@ -51,7 +56,12 @@ var handlers = {
     },
 
     'AmountQuestionIntent': function () {
-        this.emit('DoAmountQuestionCalendar');
+        var year_type = this.event.request.intent.slots.year_type.value;
+        if (year_type === 'fiscal year') {
+            this.emit('DoAmountQuestionFiscal');
+        }else{
+            this.emit('DoAmountQuestionCalendar');
+        }
     },
     'AmountQuestionPromptIntent': function () {
         var dialogState = this.event.request.dialogState;
