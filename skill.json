@@ -3,14 +3,14 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "CheckbookNYC voice assistant",
+          "summary": "CheckbookNYC.com voice assistant",
           "examplePhrases": [
-            "Alexa ask checkbook what is total budget in 2018",
-            "Alexa ask checkbook how many active subcontracts for fiscal year 2018",
-            "Alexa ask checkbook how many subcontracts cancelled in 2017"
+            "Alexa ask check book what is total budget in 2018",
+            "Alexa ask check book how many active subcontracts for fiscal year 2018",
+            "Alexa ask check book how many subcontracts cancelled in 2017"
           ],
           "name": "CheckbookNYC",
-          "description": "CheckbookNYC voice assistant",
+          "description": "CheckbookNYC voice assistant provides quick answer to most common questions of CheckbookNYC.com website users. CheckbookNYC.com is a data centric website that aggregates financial data of New York City tax payer dollars. It provides data about city budget, revenue, spending, contracts and payroll.",
           "smallIconUri": "https://s3.amazonaws.com/checkbook-nyc/nyc-108.png",
           "largeIconUri": "https://s3.amazonaws.com/checkbook-nyc/nyc-512.png"
         }

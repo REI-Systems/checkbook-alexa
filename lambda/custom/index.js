@@ -172,18 +172,17 @@ var handlers = {
 
 
     'SayWelcome': function () {
-        this.response.speak('Welcome to check book voice search!')
-        this.emit(':responseReady');
+        this.emit(':tell', "Welcome to check book voice search.");
     },
     'SayWrongQuestion': function () {
-        this.response.speak('I am not sure I have an answer to that question.')
+        this.response.speak('I am not sure I have an answer to that question.');
         this.emit(':responseReady');
     },
     'SayDontKnow': function () {
         this.emit(':tell', "I haven't been trained to respond to that request.");
     },
     'SayUnknownError': function () {
-        this.response.speak('Sorry, there was a problem. Try that question later.')
+        this.response.speak('Sorry, there was a problem. Try that question later.');
         this.emit(':responseReady');
     },
 
@@ -226,7 +225,6 @@ var handlers = {
             } else {
                 intentName = "";
                 slotArray = "";
-                intentConfirmationStatus = "";
             }
 
             slots = "";
