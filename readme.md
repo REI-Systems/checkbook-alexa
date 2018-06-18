@@ -6,12 +6,12 @@ Follow these steps to get the checkbook Alexa skill deployed to your account. At
 1. Register a new account at https://developer.amazon.com/alexa
 
 2. Use same email address and register a free account at https://aws.amazon.com/
-   1. Add a new user at https://console.aws.amazon.com/iam/home?region=us-east-1#/users, add it to a new group with permission of AdministratorAccess policy.
+   1. Add a new user at https://console.aws.amazon.com/iam/home?region=us-east-1#/users, add it to a new `AlexaSkill` group, attach `AdministratorAccess` policy.
    2. Copy the new user's Access key ID and Secret access key
    3. With above keys, use AWS CLI to config a new profile `checkbookalexa` on your local machine by running `aws configure --profile checkbookalexa`
 
 3. Install ASK CLI. https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html
-   run `ask init` to set up a new ask profile, choose `Create new profile`, type in the name `checkbookalexa`, and pick from the list to associate it with the aws profile `checkbookalexa` created in previous step. You will be lead to web sign in page to authenticate the association.
+   run `ask init -p "checkbookalexa"` to set up a new ask profile, choose `Create new profile`, type in the name `checkbookalexa`, and pick from the list to associate it with the aws profile `checkbookalexa` created in previous step. You will be lead to web sign in page to authenticate the association.
 
 4. Copy `.ask/config.template` to `./ask/config`. No changes needed. Copy `lambda/custom/config.template.js` to `lambda/custom/config.js`, customize it with api server info.
 

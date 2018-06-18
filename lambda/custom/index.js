@@ -32,6 +32,9 @@ var handlers = {
     'LaunchRequest': function () {
         this.emit('SayWelcome');
     },
+    'FallbackIntent': function () {
+        this.emit('SayWelcome');
+    },
 
     'CountQuestionIntent': function () {
         this.emit('DoCountQuestion');
@@ -172,7 +175,8 @@ var handlers = {
 
 
     'SayWelcome': function () {
-        this.emit(':tell', "Welcome to check book voice search.");
+        this.response.shouldEndSession(true);
+        this.emit(':tell', "Welcome to New York Checkbook voice assistant. You can ask about New York City budget, revenue, spending, contracts and payrolls.");
     },
     'SayWrongQuestion': function () {
         this.response.speak('I am not sure I have an answer to that question.');

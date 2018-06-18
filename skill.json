@@ -17,8 +17,7 @@
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
-      "distributionCountries": []
+      "category": "KNOWLEDGE_AND_TRIVIA"
     },
     "apis": {
       "custom": {
@@ -26,6 +25,13 @@
           "sourceDir": "lambda/custom"
         }
       }
+    },
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
     },
     "manifestVersion": "1.0"
   }
