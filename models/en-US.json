@@ -186,6 +186,13 @@
           "name": "AmountQuestionPromptIntent",
           "slots": [
             {
+              "name": "amount_prompt_subject",
+              "type": "AMOUNT_SUBJECTS",
+              "samples": [
+                "{amount_prompt_subject}"
+              ]
+            },
+            {
               "name": "amount_prompt_year",
               "type": "AMAZON.NUMBER",
               "samples": [
@@ -193,10 +200,6 @@
                 "{year_type} {amount_prompt_year}",
                 "the year of {amount_prompt_year}"
               ]
-            },
-            {
-              "name": "amount_prompt_subject",
-              "type": "AMOUNT_SUBJECTS"
             },
             {
               "name": "in_for",
@@ -208,6 +211,7 @@
             }
           ],
           "samples": [
+            "what is the",
             "what is the {amount_prompt_subject}"
           ]
         }
@@ -399,8 +403,10 @@
               "name": "amount_prompt_subject",
               "type": "AMOUNT_SUBJECTS",
               "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.637662566541.1022056966224"
+              }
             },
             {
               "name": "amount_prompt_year",
@@ -410,6 +416,20 @@
               "prompts": {
                 "elicitation": "Elicit.Slot.741025832810.1255844227428"
               }
+            },
+            {
+              "name": "in_for",
+              "type": "IN_FOR",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "year_type",
+              "type": "YEAR_TYPES",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
             }
           ]
         },
@@ -479,6 +499,15 @@
           {
             "type": "PlainText",
             "value": "choose from active expense contracts, subcontracts under review,active, canceled, approved, rejected or submitted subcontracts"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.637662566541.1022056966224",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "choose from total payroll, total spending, total budget, total revenue"
           }
         ]
       }

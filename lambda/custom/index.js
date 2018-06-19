@@ -175,8 +175,7 @@ var handlers = {
 
 
     'SayWelcome': function () {
-        this.response.shouldEndSession(true);
-        this.emit(':tell', "Welcome to New York Checkbook voice assistant. You can ask about New York City budget, revenue, spending, contracts and payrolls.");
+        this.emit(':ask', "Welcome to New York Checkbook voice assistant. You can ask about New York City budget, revenue, spending, contracts and payrolls.");
     },
     'SayWrongQuestion': function () {
         this.response.speak('I am not sure I have an answer to that question.');
