@@ -19,16 +19,27 @@
           "name": "CountQuestionIntent",
           "slots": [
             {
-              "name": "count_year",
-              "type": "AMAZON.NUMBER"
-            },
-            {
               "name": "count_subject",
               "type": "COUNT_SUBJECTS"
             },
             {
               "name": "in_for",
-              "type": "IN_FOR"
+              "type": "IN_FOR",
+              "samples": [
+                "{in_for}",
+                "{in_for} the"
+              ]
+            },
+            {
+              "name": "count_year",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{count_year}",
+                "year {count_year}",
+                "year of {count_year}",
+                "fiscal year {count_year}",
+                "fiscal year of {count_year}"
+              ]
             }
           ],
           "samples": [
@@ -39,109 +50,99 @@
           "name": "CountQuestionCalendarIntent",
           "slots": [
             {
-              "name": "count_year",
-              "type": "AMAZON.NUMBER"
-            },
-            {
               "name": "count_subject",
               "type": "COUNT_SUBJECTS"
             },
             {
               "name": "in_for",
-              "type": "IN_FOR"
+              "type": "IN_FOR",
+              "samples": [
+                "{in_for}",
+                "{in_for} the"
+              ]
             },
             {
               "name": "year_type",
               "type": "YEAR_TYPES"
-            }
-          ],
-          "samples": [
-            "how many {count_subject} {in_for} calendar year {count_year}"
-          ]
-        },
-        {
-          "name": "CountQuestionFiscalIntent",
-          "slots": [
+            },
             {
               "name": "count_year",
-              "type": "AMAZON.NUMBER"
-            },
-            {
-              "name": "count_subject",
-              "type": "COUNT_SUBJECTS"
-            },
-            {
-              "name": "in_for",
-              "type": "IN_FOR"
-            },
-            {
-              "name": "year_type",
-              "type": "YEAR_TYPES"
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{count_year}",
+                "year {count_year}",
+                "year of {count_year}"
+              ]
             }
           ],
           "samples": [
-            "how many {count_subject} {in_for} fiscal year {count_year}"
+            "how many {count_subject} {in_for} calendar {count_year}"
           ]
         },
         {
           "name": "AmountQuestionIntent",
           "slots": [
             {
-              "name": "amount_year",
-              "type": "AMAZON.NUMBER"
-            },
-            {
               "name": "amount_subject",
-              "type": "AMOUNT_SUBJECTS"
+              "type": "AMOUNT_SUBJECTS",
+              "samples": [
+                "{amount_subject}",
+                "the {amount_subject}"
+              ]
             },
             {
               "name": "in_for",
-              "type": "IN_FOR"
-            }
-          ],
-          "samples": [
-            "what is the {amount_subject} {in_for} {amount_year}"
-          ]
-        },
-        {
-          "name": "AmountQuestionCalendarIntent",
-          "slots": [
+              "type": "IN_FOR",
+              "samples": [
+                "{in_for}",
+                "{in_for} the"
+              ]
+            },
             {
               "name": "amount_year",
-              "type": "AMAZON.NUMBER"
-            },
-            {
-              "name": "amount_subject",
-              "type": "AMOUNT_SUBJECTS"
-            },
-            {
-              "name": "in_for",
-              "type": "IN_FOR"
-            },
-            {
-              "name": "year_type",
-              "type": "YEAR_TYPES"
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{count_year}",
+                "year {count_year}",
+                "year of {count_year}",
+                "calendar {count_year}",
+                "calendar year of {count_year}",
+                "calendar year {count_year}"
+              ]
             }
           ],
           "samples": [
-            "what is the {amount_subject} {in_for} calendar year {amount_year}",
-            "what is the {amount_subject} {in_for} year {amount_year}"
+            "what is {amount_subject} {in_for} {amount_year}",
+            "what's {amount_subject} {in_for} {amount_year}"
           ]
         },
         {
           "name": "AmountQuestionFiscalIntent",
           "slots": [
             {
-              "name": "amount_year",
-              "type": "AMAZON.NUMBER"
+              "name": "amount_subject",
+              "type": "AMOUNT_SUBJECTS",
+              "samples": [
+                "{amount_subject}",
+                "the {amount_subject}"
+              ]
             },
             {
-              "name": "amount_subject",
-              "type": "AMOUNT_SUBJECTS"
+              "name": "amount_year",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{count_year}",
+                "year {count_year}",
+                "year of {count_year}"
+              ]
             },
             {
               "name": "in_for",
-              "type": "IN_FOR"
+              "type": "IN_FOR",
+              "samples": [
+                "{in_for}",
+                "{in_for} the"
+              ]
             },
             {
               "name": "year_type",
@@ -149,7 +150,8 @@
             }
           ],
           "samples": [
-            "what is the {amount_subject} {in_for} fiscal year {amount_year}"
+            "what is {amount_subject} {in_for} fiscal {amount_year}",
+            "what's {amount_subject} {in_for} fiscal {amount_year}"
           ]
         },
         {
@@ -232,7 +234,9 @@
               "name": {
                 "value": "active subcontracts",
                 "synonyms": [
-                  "active subcontract"
+                  "active subcontract",
+                  "active sub contracts",
+                  "active sub contract"
                 ]
               }
             },
@@ -241,10 +245,15 @@
                 "value": "subcontracts canceled",
                 "synonyms": [
                   "subcontract canceled",
+                  "sub contract canceled",
                   "subcontracts got canceled",
+                  "sub contracts got canceled",
                   "subcontract got canceled",
+                  "sub contract got canceled",
                   "canceled subcontracts",
-                  "canceled subcontract"
+                  "canceled sub contracts",
+                  "canceled subcontract",
+                  "canceled sub contract"
                 ]
               }
             },
@@ -253,10 +262,16 @@
                 "value": "subcontracts approved",
                 "synonyms": [
                   "subcontract approved",
+                  "sub contract approved",
+                  "sub contracts approved",
                   "subcontracts got approved",
+                  "sub contracts got approved",
                   "subcontract got approved",
+                  "sub contract got approved",
                   "approved subcontracts",
-                  "approved subcontract"
+                  "approved sub contracts",
+                  "approved subcontract",
+                  "approved sub contract"
                 ]
               }
             },
@@ -265,10 +280,16 @@
                 "value": "subcontracts rejected",
                 "synonyms": [
                   "subcontract rejected",
+                  "sub contract rejected",
+                  "sub contracts rejected",
                   "subcontracts got rejected",
+                  "sub contracts got rejected",
                   "subcontract got rejected",
+                  "sub contract got rejected",
                   "rejected subcontracts",
-                  "rejected subcontract"
+                  "rejected sub contracts",
+                  "rejected subcontract",
+                  "rejected sub contract"
                 ]
               }
             },
@@ -277,10 +298,16 @@
                 "value": "subcontracts submitted",
                 "synonyms": [
                   "subcontract submitted",
+                  "sub contract submitted",
+                  "sub contracts submitted",
                   "subcontracts got submitted",
+                  "sub contracts got submitted",
                   "subcontract got submitted",
+                  "sub contract got submitted",
                   "submitted subcontracts",
-                  "submitted subcontract"
+                  "submitted sub contracts",
+                  "submitted subcontract",
+                  "submitted sub contract"
                 ]
               }
             },
@@ -288,7 +315,9 @@
               "name": {
                 "value": "subcontracts under review",
                 "synonyms": [
-                  "subcontract under review"
+                  "subcontract under review",
+                  "sub contracts under review",
+                  "sub contract under review"
                 ]
               }
             }
@@ -489,7 +518,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "choose from active expense contracts, subcontracts under review,active, canceled, approved, rejected or submitted subcontracts"
+            "value": "choose from active expense contracts, subcontracts under review, active, canceled, approved, rejected or submitted subcontracts"
           }
         ]
       },
@@ -498,7 +527,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "choose from active expense contracts, subcontracts under review,active, canceled, approved, rejected or submitted subcontracts"
+            "value": "choose from active expense contracts, subcontracts under review, active, canceled, approved, rejected or submitted subcontracts"
           }
         ]
       },

@@ -1,8 +1,8 @@
 'use strict';
-var Alexa = require("alexa-sdk");
-var http = require('http');
-var https = require('https');
-var config = require('./config.js')
+let Alexa = require("alexa-sdk");
+let http = require('http');
+let https = require('https');
+let config = require('./config.js');
 
 const UNKNOWN_ERROR = "unknown error";
 const YEAR_ERROR = "invalid year";
@@ -23,12 +23,12 @@ const AMOUNT_SUBJECTS = [
 ];
 
 exports.handler = function(event, context) {
-    var alexa = Alexa.handler(event, context);
+    let alexa = Alexa.handler(event, context);
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
 
-var handlers = {
+let handlers = {
     'LaunchRequest': function () {
         this.emit('SayWelcome');
     },
@@ -40,36 +40,31 @@ var handlers = {
         this.emit('DoCountQuestion');
     },
     'CountQuestionPromptIntent': function () {
-        var dialogState = this.event.request.dialogState;
+        let dialogState = this.event.request.dialogState;
         if (dialogState == "STARTED" || dialogState == "IN_PROGRESS") {
             this.emit(":delegate");
         }
 
-        var year_type = this.event.request.intent.slots.year_type.value;
+        let year_type = this.event.request.intent.slots.year_type.value;
         if (year_type === 'calendar year') {
             this.emit('DoCountQuestionCalendar');
         }else{
             this.emit('DoCountQuestionFiscal');
         }
     },
-    'CountQuestionFiscalIntent': function () {
-        this.emit('DoCountQuestionFiscal');
-    },
     'CountQuestionCalendarIntent': function () {
         this.emit('DoCountQuestionCalendar');
     },
-
-
     'AmountQuestionIntent': function () {
         this.emit('DoAmountQuestionCalendar');
     },
     'AmountQuestionPromptIntent': function () {
-        var dialogState = this.event.request.dialogState;
+        let dialogState = this.event.request.dialogState;
         if (dialogState == "STARTED" || dialogState == "IN_PROGRESS") {
             this.emit(":delegate");
         }
 
-        var year_type = this.event.request.intent.slots.year_type.value;
+        let year_type = this.event.request.intent.slots.year_type.value;
         if (year_type === 'fiscal year') {
             this.emit('DoAmountQuestionFiscal');
         }else{
@@ -79,10 +74,6 @@ var handlers = {
     'AmountQuestionFiscalIntent': function () {
         this.emit('DoAmountQuestionFiscal');
     },
-    'AmountQuestionCalendarIntent': function () {
-        this.emit('DoAmountQuestionCalendar');
-    },
-
     'DoCountQuestionFiscal': function () {
         handlers.DoCountQuestion(this, 'fiscal');
     },
@@ -95,15 +86,15 @@ var handlers = {
         }
         console.log("THIS.EVENT = " + JSON.stringify(handler.event));
 
-        var from_promot_intent = !!handler.event.request.intent.slots.count_prompt_subject;
-        var subject_obj = from_promot_intent?handler.event.request.intent.slots.count_prompt_subject:handler.event.request.intent.slots.count_subject;
+        let from_promot_intent = !!handler.event.request.intent.slots.count_prompt_subject;
+        let subject_obj = from_promot_intent?handler.event.request.intent.slots.count_prompt_subject:handler.event.request.intent.slots.count_subject;
 
-        var subject;
+        let subject;
         if (subject_obj.resolutions && subject_obj.resolutions.resolutionsPerAuthority[0].status.code ==="ER_SUCCESS_MATCH") {
             subject = subject_obj.resolutions.resolutionsPerAuthority[0].values[0].value.name;
         }
 
-        var year = from_promot_intent?handler.event.request.intent.slots.count_prompt_year.value:handler.event.request.intent.slots.count_year.value;
+        let year = from_promot_intent?handler.event.request.intent.slots.count_prompt_year.value:handler.event.request.intent.slots.count_year.value;
 
         if (!year || year === '?' || !subject || subject === '?') {
             handler.emit('SayWrongQuestion');
@@ -114,7 +105,7 @@ var handlers = {
             handler.emit('SayWrongQuestion');
         }else{
             ApiCallHttp(subject, year, year_type, (data) => {
-                var has_error = ApiHasError(data);
+                let has_error = ApiHasError(data);
                 if (has_error) {
                     if (has_error === YEAR_ERROR) {
                         handler.emit(':tell', "I have no data for year " + parseInt(year, 10) );
@@ -141,15 +132,15 @@ var handlers = {
         }
         console.log("THIS.EVENT = " + JSON.stringify(handler.event));
 
-        var from_promot_intent = !!handler.event.request.intent.slots.amount_prompt_subject;
-        var subject_obj = from_promot_intent?handler.event.request.intent.slots.amount_prompt_subject:handler.event.request.intent.slots.amount_subject;
+        let from_promot_intent = !!handler.event.request.intent.slots.amount_prompt_subject;
+        let subject_obj = from_promot_intent?handler.event.request.intent.slots.amount_prompt_subject:handler.event.request.intent.slots.amount_subject;
 
-        var subject;
+        let subject;
         if (subject_obj.resolutions && subject_obj.resolutions.resolutionsPerAuthority[0].status.code ==="ER_SUCCESS_MATCH") {
             subject = subject_obj.resolutions.resolutionsPerAuthority[0].values[0].value.name;
         }
 
-        var year = from_promot_intent?handler.event.request.intent.slots.amount_prompt_year.value:handler.event.request.intent.slots.amount_year.value;
+        let year = from_promot_intent?handler.event.request.intent.slots.amount_prompt_year.value:handler.event.request.intent.slots.amount_year.value;
         if (!year || year === '?' || !subject || subject === '?') {
             handler.emit('SayWrongQuestion');
         }else if ( parseInt(year, 10) < 1000){
@@ -159,7 +150,7 @@ var handlers = {
             handler.emit('SayWrongQuestion');
         }else{
             ApiCallHttp(subject, year, year_type, (data) => {
-                var has_error = ApiHasError(data);
+                let has_error = ApiHasError(data);
                 if (has_error) {
                     if (has_error === YEAR_ERROR) {
                         handler.emit(':tell', "I have no data for year " + parseInt(year, 10) );
@@ -197,8 +188,7 @@ var handlers = {
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent' : function() {
-        this.response.speak("You can try: 'alexa, ask check book how many active sub contracts in year 2018'");
-        this.emit(':responseReady');
+        this.emit(':ask', "You can try: 'how many active sub contracts in 2018, or what is total payroll in 2017'");
     },
     'AMAZON.CancelIntent' : function() {
         this.response.speak('Bye');
@@ -216,12 +206,12 @@ var handlers = {
             requestType = "This is an Unhandled request. The request type is, "+this.event.request.type+" .";
             dialogState = this.event.request.dialogState;
             intent = this.event.request.intent;
-            if (intent != undefined) {
+            if (intent !== undefined) {
                 intentName = " The intent name is, "+this.event.request.intent.name+" .";
                 slotArray = this.event.request.intent.slots;
                 intentConfirmationStatus = this.event.request.intent.confirmationStatus;
 
-                if (intentConfirmationStatus != "NONE" && intentConfirmationStatus != undefined ) {
+                if (intentConfirmationStatus !== "NONE" && intentConfirmationStatus !== undefined ) {
                     intentConfirmationStatus = " and its confirmation status is "+ intentConfirmationStatus+" . ";
                     intentName = intentName+intentConfirmationStatus;
                 }
@@ -233,7 +223,7 @@ var handlers = {
             slots = "";
             count = 0;
 
-            if (slotArray == undefined || slots == undefined) {
+            if (slotArray === undefined || slots === undefined) {
                 slots = "";
             }
 
@@ -245,7 +235,7 @@ var handlers = {
                 let slotConfirmationStatus = slotArray[slot].confirmationStatus;
                 slots = slots + "The <say-as interpret-as='ordinal'>"+count+"</say-as> slot is, " + slotName + ", its value is, " +slotValue;
 
-                if (slotConfirmationStatus!= undefined && slotConfirmationStatus != "NONE") {
+                if (slotConfirmationStatus!== undefined && slotConfirmationStatus !== "NONE") {
                   slots = slots+" and its confirmation status is "+slotConfirmationStatus+" . ";
                 } else {
                   slots = slots+" . ";
@@ -254,7 +244,7 @@ var handlers = {
 
             //Delegate to Dialog Manager when needed
             //<reference to docs>
-            if (dialogState == "STARTED" || dialogState == "IN_PROGRESS") {
+            if (dialogState === "STARTED" || dialogState === "IN_PROGRESS") {
               this.emit(":delegate");
             }
         } catch(err) {
@@ -263,9 +253,8 @@ var handlers = {
 
         let speechOutput = "Your end point receive a request, here's a breakdown. " + requestType + " " + intentName + slots;
         let cardTitle = "Skill ID: " + skillId;
-        let cardContent = speechOutput;
 
-        this.response.cardRenderer(cardTitle, cardContent);
+        this.response.cardRenderer(cardTitle, speechOutput);
         this.response.speak(speechOutput);
         this.emit(':responseReady');
       }
@@ -274,26 +263,26 @@ var handlers = {
 
 
 function ApiCallHttp(subject, year, year_type, callback) {
-    var api_path = subject.replace(/ /g, '_');
+    let api_path = subject.replace(/ /g, '_');
 
-    var options = {
+    let options = {
         host: config.host,
         auth: config.auth,
         port: config.port,
         path: config.path.replace("[API_PATH]", api_path).replace("[YEAR]", year).replace("[YEAR_TYPE]", year_type),
         method: 'GET'
     };
-    var protocol = (config.protocol==='https')?https:http;
+    let protocol = (config.protocol==='https')?https:http;
 
-    var req = protocol.request(options, res => {
+    let req = protocol.request(options, res => {
         res.setEncoding('utf8');
-        var returnData = "";
+        let returnData = "";
 
         res.on('data', chunk => {
             returnData = returnData + chunk;
         });
         res.on('end', () => {
-            var result = JSON.parse(returnData);
+            let result = JSON.parse(returnData);
             callback(result);
         });
     });
